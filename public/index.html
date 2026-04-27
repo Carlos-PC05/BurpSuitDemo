@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burp Suite Demo | Vulnerable Input</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="badge">Vulnerable App Demo</div>
+            <h1>Status Update</h1>
+            <p>Send a short broadcast to the system. Messages are strictly limited to 20 characters to preserve bandwidth.</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <form id="messageForm">
+                    <div class="input-group">
+                        <label for="messageInput">Your Message</label>
+                        <div class="textarea-wrapper">
+                            <textarea 
+                                id="messageInput" 
+                                placeholder="Type something short..."
+                                rows="3"
+                            ></textarea>
+                            <div class="char-counter" id="charCounter">0 / 20</div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn">
+                        <span>Send Message</span>
+                        <div class="loader" id="btnLoader"></div>
+                    </button>
+                    <p class="validation-warning" id="validationWarning">Message exceeds the maximum length of 20 characters!</p>
+                </form>
+            </div>
+
+            <!-- Alerts -->
+            <div class="alert-container">
+                <div class="alert alert-error" id="errorAlert">
+                    <div class="alert-icon">
+                        <svg xmlns="http://www.w3.org/w/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                    </div>
+                    <div class="alert-content">
+                        <h4>Validation Failed</h4>
+                        <p>Your message was blocked by frontend checks.</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-success" id="successAlert">
+                    <div class="alert-icon">
+                        <svg xmlns="http://www.w3.org/w/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <div class="alert-content">
+                        <h4>Success! Message Received</h4>
+                        <p id="successMessageText" class="code-font"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Cyber Security Course - Final Project Demo</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
